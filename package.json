@@ -1,0 +1,13 @@
+{
+  "name": "checkout-pix-fortpay",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check script.js && node --check admin.js && node --check api/pix.js && node --check api/settings.js && node --check api/_lib/shared.js && node --check api/_lib/fortpay.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+
