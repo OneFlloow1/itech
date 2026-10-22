@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pagamento Seguro - Checkout PIX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="secure-bar">
+      <span class="shield" aria-hidden="true"></span>
+      <span>PAGAMENTO 100% SEGURO</span>
+    </div>
+
+    <main class="checkout-shell">
+      <header class="brand-header" aria-label="iTech">
+        <img src="assets/itech-black.png" alt="iTech">
+      </header>
+
+      <form id="checkoutForm" class="checkout-form" novalidate>
+        <section class="checkout-card identify-card" aria-labelledby="identifyTitle">
+          <header class="section-heading">
+            <span class="step-number">1</span>
+            <h1 id="identifyTitle">Identifique-se</h1>
+          </header>
+
+          <div class="field-stack">
+            <label class="field full">
+              <span>Nome Completo</span>
+              <input id="customerName" name="customerName" type="text" autocomplete="name" placeholder="Nome Completo" required>
+              <small class="error-message">Informe o nome completo.</small>
+            </label>
+
+            <label class="field full">
+              <span>E-mail</span>
+              <input id="customerEmail" name="customerEmail" type="email" autocomplete="email" placeholder="E-mail" required>
+              <small class="error-message">Informe um e-mail valido.</small>
+            </label>
+
+            <label class="field full">
+              <span>Telefone/WhatsApp</span>
+              <input id="customerPhone" name="customerPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 0 0000-0000" maxlength="15" required>
+              <small class="error-message">Informe um telefone valido.</small>
+            </label>
+          </div>
+        </section>
+
+        <section class="checkout-card payment-card" aria-labelledby="paymentTitle">
+          <header class="section-heading section-heading--payment">
+            <span class="step-number">2</span>
+            <div>
+              <h2 id="paymentTitle">Pagamento</h2>
+              <p>Escolha o seu m&eacute;todo de pagamento preferido</p>
+            </div>
+          </header>
+
+          <div class="payment-method" aria-label="Metodo de pagamento selecionado">
+            <span class="approval">APROVA&Ccedil;&Atilde;O IMEDIATA</span>
+            <span class="selected-check" aria-hidden="true"></span>
+            <h3>Pix</h3>
+
+            <div class="pix-option">
+              <span class="pix-mark" aria-hidden="true">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+              <span>Pix</span>
+            </div>
+
+            <label class="field full cpf-field">
+              <span>CPF</span>
+              <input id="customerCpf" name="customerCpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required>
+              <small class="error-message">Informe um CPF valido.</small>
+            </label>
+
+            <div class="purchase-summary">
+              <h3>Voc&ecirc; est&aacute; adquirindo:</h3>
+
+              <label class="field full">
+                <span>Valor do Pix</span>
+                <input id="pixValue" name="pixValue" type="text" value="Carregando..." readonly>
+              </label>
+
+            </div>
+
+            <button class="primary-button" type="submit" id="generateButton">
+              Gerar PIX
+            </button>
+          </div>
+        </section>
+      </form>
+
+      <aside class="checkout-card pix-result" id="pixResult" hidden aria-live="polite">
+        <div class="pix-header">
+          <div>
+            <p class="eyebrow">PIX gerado</p>
+            <h2>Finalize no app do seu banco</h2>
+          </div>
+          <span class="amount-pill" id="pixAmount">R$ 0,00</span>
+        </div>
+
+        <div class="qr-box" id="qrBox">
+          <div class="qr-unavailable">
+            <span>QR Code indisponivel</span>
+            <small>Gere um PIX para visualizar o QR Code.</small>
+          </div>
+        </div>
+
+        <label class="field full">
+          <span>C&oacute;digo PIX copia e cola</span>
+          <textarea id="pixCode" rows="4" readonly></textarea>
+        </label>
+
+        <div class="result-actions">
+          <button class="secondary-button" type="button" id="copyPixButton">Copiar c&oacute;digo</button>
+          <button class="ghost-button" type="button" id="newPixButton">Gerar outro</button>
+        </div>
+
+        <p class="helper-text" id="pixHelper">
+          Aguardando configura&ccedil;&atilde;o da API do gateway para gerar um PIX real.
+        </p>
+      </aside>
+    </main>
+
+    <script src="vendor/qrcode.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

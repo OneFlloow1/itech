@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel Admin - PIX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="secure-bar">
+      <span class="shield" aria-hidden="true"></span>
+      <span>PAINEL ADMIN PIX</span>
+    </div>
+
+    <main class="checkout-shell admin-shell">
+      <header class="brand-header" aria-label="iTech">
+        <img src="assets/itech-black.png" alt="iTech">
+      </header>
+
+      <section class="checkout-card admin-card" aria-labelledby="adminTitle">
+        <header class="section-heading">
+          <span class="step-number">R$</span>
+          <div>
+            <h1 id="adminTitle">Valor fixo do Pix</h1>
+            <p>Defina o valor usado na proxima cobranca gerada no checkout.</p>
+          </div>
+        </header>
+
+        <form id="adminForm" class="field-stack" novalidate>
+          <label class="field full">
+            <span>Senha de administrador</span>
+            <input id="adminToken" name="adminToken" type="password" autocomplete="off" placeholder="Senha do painel">
+          </label>
+          <label class="field full">
+            <span>Valor do Pix</span>
+            <input id="adminPixValue" name="adminPixValue" type="text" inputmode="decimal" autocomplete="off" placeholder="R$ 120,00" required>
+            <small class="error-message">Informe um valor maior que zero.</small>
+          </label>
+
+          <button class="primary-button" type="submit" id="savePixValueButton">
+            Salvar valor
+          </button>
+        </form>
+
+        <p class="helper-text admin-feedback" id="adminFeedback" aria-live="polite">
+          Carregando valor atual...
+        </p>
+
+        <a class="admin-link" href="/">Voltar para o checkout</a>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
